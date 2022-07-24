@@ -6,11 +6,6 @@
 
     <h1>Edit Pin #{{pin.id}}</h1>
 
-    {{ form_start(monFormulaire) }}
-        {{ form_widget(monFormulaire)}}
-
-        <input type="submit" value="Update Pin">
-
-    {{ form_end(monFormulaire) }}
+    {{ include('pins/_form.html.twig', {'submitButtonText':'Update Pin'})}}
 
 {% endblock %}
