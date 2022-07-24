@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Pin;
+use App\Form\PinType;
 use App\Repository\PinRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -36,23 +37,21 @@ class PinsController extends AbstractController
      */
     public function edit(Request $request, EntityManagerInterface $em, Pin $pin): Response
     {
-        $form = $this->createFormBuilder($pin)
-        ->add('title', null, ['attr'=> ['autofocus' => true]])
-        ->add('description', null)
-        ->getForm()
-        ;
-     
+        
+        $form = $this->createForm(PinType::class, $pin);
+        
+        
         $form->handleRequest($request); //récupérer les données du formulaire via $request
- 
+        
         if ($form->isSubmitted() && $form->isValid()) {
-         
+            
          $em->persist($pin); // on n'a plus besoin de faire un $form->getData() car l'objet passé au createFormBuilder est récupéré bel et bien et a été mis à jour par les données entrées au niveau du formulaire
          $em->flush();
  
          return $this->redirectToRoute('app_pins_show',['id' => $pin->getId()]);
  
         }
-          
+       
         return $this->render('pins/edit.html.twig', [
             'pin' => $pin,
             'monFormulaire' => $form->createView()
@@ -66,11 +65,7 @@ class PinsController extends AbstractController
     {
         $pin = new Pin;
         
-        $form = $this->createFormBuilder($pin)
-        ->add('title', null, ['attr'=> ['autofocus' => true]])
-        ->add('description', null)
-        ->getForm()
-        ;
+        $form = $this->createForm(PinType::class, $pin);
      
         $form->handleRequest($request); //récupérer les données du formulaire via $request
  
