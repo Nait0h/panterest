@@ -47,6 +47,7 @@ class PinsController extends AbstractController
             
          $em->persist($pin); // on n'a plus besoin de faire un $form->getData() car l'objet passé au createFormBuilder est récupéré bel et bien et a été mis à jour par les données entrées au niveau du formulaire
          $em->flush();
+         $this->addFlash('success', 'Pin successfully updated!');
  
          return $this->redirectToRoute('app_pins_show',['id' => $pin->getId()]);
  
@@ -69,6 +70,7 @@ class PinsController extends AbstractController
         {
             $em->remove($pin);
             $em->flush();
+            $this->addFlash('info', 'Pin successfully deleted!');
         }
                 
         return $this->redirectToRoute('app_home');
@@ -90,6 +92,7 @@ class PinsController extends AbstractController
          
          $em->persist($pin); // on n'a plus besoin de faire un $form->getData() car l'objet passé au createFormBuilder est récupéré bel et bien et a été mis à jour par les données entrées au niveau du formulaire
          $em->flush();
+         $this->addFlash('success', 'Pin successfully created!');
  
          return $this->redirectToRoute('app_pins_show',['id' => $pin->getId()]);
  
