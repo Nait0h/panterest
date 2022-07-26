@@ -33,7 +33,7 @@ class Pin
     /**
      * @ORM\Column(type="text", nullable=true)
      * @Assert\NotBlank
-     * @Assert\Length(min=10, minMessage="Tsy azo atao latsaky ny 10 caractera azafady!")
+     * @Assert\Length(min=10)
      */
     private $description;
 
