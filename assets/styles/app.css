@@ -1,5 +1,8 @@
-html, body{
+@import url('https://fr.allfont.net/allfont.css?fonts=montserrat');
+
+body{
     font-family: 'Montserrat', sans-serif;
+    background-color: lightgray;
 }
 .alert{
     padding: 10px;
