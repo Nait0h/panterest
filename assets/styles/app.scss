@@ -1,0 +1,28 @@
+@import url('https://fr.allfont.net/allfont.css?fonts=montserrat');
+@import 'shared/variables';
+
+body{
+    font-family: $primary-font, sans-serif;
+    background-color: lightgray;
+}
+
+.alert{
+    padding: 10px;
+    color:white;
+    text-align: center;
+    margin: 0;
+    border: none;
+    border-radius: 0;
+
+    &.alert-success{
+        background-color:green;
+    }
+    &.alert-error{
+        background-color:red;
+    }
+    &.alert-info{
+        background-color:blue;
+    }
+
+}
+
