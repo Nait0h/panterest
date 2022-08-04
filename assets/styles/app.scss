@@ -1,9 +1,9 @@
 @import url('https://fr.allfont.net/allfont.css?fonts=montserrat');
 @import 'shared/variables';
+@import '~bootstrap/scss/bootstrap';
 
 body{
     font-family: $primary-font, sans-serif;
-    background-color: lightgray;
 }
 
 .alert{
